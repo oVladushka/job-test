@@ -33,6 +33,7 @@ app.use(cookieParser());
 
 
 
+
 // PAGES
 app.get('/', (req, res) => {
     res.render('index')
