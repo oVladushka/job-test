@@ -1,12 +1,8 @@
 const express = require('express');
-
-const fs = require('fs');
 const path = require('path');
-
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cookieParser = require("cookie-parser");
-
 const hbs = require('hbs');
 
 require('./models/User');
@@ -15,10 +11,10 @@ const Picture = mongoose.model('pictures');
 const userRoutes = require('./routes/userRoutes');
 const protect = require('./middlewares/protect');
 
-dotenv.config({ path: './config.env'});
+dotenv.config({ path: './config.env' });
 
 const app = express();
-app.enable('trust proxy'); // для куки с токеном
+app.enable('trust proxy'); // for cookie with a token
 
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true },
     (err) => {

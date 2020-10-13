@@ -11,16 +11,12 @@ function sendCookie(req, res, cookie_name, token) {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000), // через n дней истечёт
             httpOnly: true,
             secure: true
-            // domain: 'my-site.com',
-            // path: '/api'
         });
     }else{
         res.cookie(cookie_name, token, {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000), // через n дней истечёт
             httpOnly: true,
             secure: false
-            // domain: 'my-site.com',
-            // path: '/api'
         });
     }
 }
@@ -40,7 +36,6 @@ exports.signup = async (req, res) => { // регистрация
 
         res.status(200).json({message: 'success', token});
 
-
     }catch(e){
 
         if(e.errors.name || e.errors.email || e.errors.password){
@@ -53,9 +48,13 @@ exports.signup = async (req, res) => { // регистрация
             };
 
             res.status(400).json({ error: errors });
+
         }else{
+
             res.status(400).json({ error: 'something went wrong, try again later' });
+
         }
+
     }
 };
 exports.signin = async (req, res) => {
@@ -89,6 +88,7 @@ exports.uploadImage = async (req, res) => {
         await picture.save();
 
         res.status(200).json({ message: 'success', id: picture.id  })
+
     }catch(e){
 
         console.log(e);
@@ -111,6 +111,7 @@ exports.getLastPosts = async (req, res) => {
         });
 
         res.status(200).json({message: 'success', data: dataToSend})
+
     }catch(e){
 
         console.log(e);
