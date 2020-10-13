@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/form.css">
+    <title>Upload</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+{{>header}}
+
+<div id="root">
+    <form enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" accept="image/*" id="file" name="file" >
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="js/upload.js"></script>
+</body>
+</html>
