@@ -120,20 +120,3 @@ exports.getLastPosts = async (req, res) => {
 
     }
 };
-exports.getImage = async (req, res) => {
-    try{
-
-        const picture = await Picture.findOne({_id: req.params.id});
-        if(!picture) return res.status(400).json({error: 'No such picture'});
-
-        res.set('content-type', 'image/png');
-        res.status(200).send(picture.picture.buffer)
-
-    }catch(e){
-
-        console.log(e);
-
-        res.status(500).json({error: 'something went wrong, try again later'})
-
-    }
-};
